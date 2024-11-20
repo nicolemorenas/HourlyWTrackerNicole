@@ -6,14 +6,65 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		4C6D6BAF2CEE8ECC007578FC /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C6D6BAE2CEE8ECC007578FC /* WidgetKit.framework */; };
+		4C6D6BB12CEE8ECC007578FC /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C6D6BB02CEE8ECC007578FC /* SwiftUI.framework */; };
+		4C6D6BC22CEE8ECE007578FC /* WeatherWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4C6D6BAC2CEE8ECC007578FC /* WeatherWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4C6D6BC02CEE8ECE007578FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C6D6B6F2CEE89AA007578FC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C6D6BAB2CEE8ECC007578FC;
+			remoteInfo = WeatherWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4C6D6BC72CEE8ECE007578FC /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				4C6D6BC22CEE8ECE007578FC /* WeatherWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		4C6D6B772CEE89AA007578FC /* HourlyWTrackerNicole.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HourlyWTrackerNicole.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C6D6BAC2CEE8ECC007578FC /* WeatherWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WeatherWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C6D6BAE2CEE8ECC007578FC /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		4C6D6BB02CEE8ECC007578FC /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		4C6D6BC32CEE8ECE007578FC /* Exceptions for "WeatherWidget" folder in "WeatherWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 4C6D6BAB2CEE8ECC007578FC /* WeatherWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		4C6D6B792CEE89AA007578FC /* HourlyWTrackerNicole */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = HourlyWTrackerNicole;
+			sourceTree = "<group>";
+		};
+		4C6D6BB22CEE8ECC007578FC /* WeatherWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				4C6D6BC32CEE8ECE007578FC /* Exceptions for "WeatherWidget" folder in "WeatherWidgetExtension" target */,
+			);
+			path = WeatherWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,6 +77,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4C6D6BA92CEE8ECC007578FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C6D6BB12CEE8ECC007578FC /* SwiftUI.framework in Frameworks */,
+				4C6D6BAF2CEE8ECC007578FC /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -33,6 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				4C6D6B792CEE89AA007578FC /* HourlyWTrackerNicole */,
+				4C6D6BB22CEE8ECC007578FC /* WeatherWidget */,
+				4C6D6BAD2CEE8ECC007578FC /* Frameworks */,
 				4C6D6B782CEE89AA007578FC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,8 +103,18 @@
 			isa = PBXGroup;
 			children = (
 				4C6D6B772CEE89AA007578FC /* HourlyWTrackerNicole.app */,
+				4C6D6BAC2CEE8ECC007578FC /* WeatherWidgetExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		4C6D6BAD2CEE8ECC007578FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4C6D6BAE2CEE8ECC007578FC /* WidgetKit.framework */,
+				4C6D6BB02CEE8ECC007578FC /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -55,10 +127,12 @@
 				4C6D6B732CEE89AA007578FC /* Sources */,
 				4C6D6B742CEE89AA007578FC /* Frameworks */,
 				4C6D6B752CEE89AA007578FC /* Resources */,
+				4C6D6BC72CEE8ECE007578FC /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4C6D6BC12CEE8ECE007578FC /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				4C6D6B792CEE89AA007578FC /* HourlyWTrackerNicole */,
@@ -69,6 +143,28 @@
 			productName = HourlyWTrackerNicole;
 			productReference = 4C6D6B772CEE89AA007578FC /* HourlyWTrackerNicole.app */;
 			productType = "com.apple.product-type.application";
+		};
+		4C6D6BAB2CEE8ECC007578FC /* WeatherWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C6D6BC42CEE8ECE007578FC /* Build configuration list for PBXNativeTarget "WeatherWidgetExtension" */;
+			buildPhases = (
+				4C6D6BA82CEE8ECC007578FC /* Sources */,
+				4C6D6BA92CEE8ECC007578FC /* Frameworks */,
+				4C6D6BAA2CEE8ECC007578FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				4C6D6BB22CEE8ECC007578FC /* WeatherWidget */,
+			);
+			name = WeatherWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = WeatherWidgetExtension;
+			productReference = 4C6D6BAC2CEE8ECC007578FC /* WeatherWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -81,6 +177,9 @@
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					4C6D6B762CEE89AA007578FC = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					4C6D6BAB2CEE8ECC007578FC = {
 						CreatedOnToolsVersion = 16.1;
 					};
 				};
@@ -100,12 +199,20 @@
 			projectRoot = "";
 			targets = (
 				4C6D6B762CEE89AA007578FC /* HourlyWTrackerNicole */,
+				4C6D6BAB2CEE8ECC007578FC /* WeatherWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4C6D6B752CEE89AA007578FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C6D6BAA2CEE8ECC007578FC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +229,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4C6D6BA82CEE8ECC007578FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4C6D6BC12CEE8ECE007578FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4C6D6BAB2CEE8ECC007578FC /* WeatherWidgetExtension */;
+			targetProxy = 4C6D6BC02CEE8ECE007578FC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		4C6D6B832CEE89AB007578FC /* Debug */ = {
@@ -300,6 +422,58 @@
 			};
 			name = Release;
 		};
+		4C6D6BC52CEE8ECE007578FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WeatherWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WeatherWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.morenas.HourlyWTrackerNicole.WeatherWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4C6D6BC62CEE8ECE007578FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WeatherWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WeatherWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ca.morenas.HourlyWTrackerNicole.WeatherWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -317,6 +491,15 @@
 			buildConfigurations = (
 				4C6D6B862CEE89AB007578FC /* Debug */,
 				4C6D6B872CEE89AB007578FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C6D6BC42CEE8ECE007578FC /* Build configuration list for PBXNativeTarget "WeatherWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C6D6BC52CEE8ECE007578FC /* Debug */,
+				4C6D6BC62CEE8ECE007578FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
