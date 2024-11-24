@@ -10,6 +10,8 @@
 		4C6D6BAF2CEE8ECC007578FC /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C6D6BAE2CEE8ECC007578FC /* WidgetKit.framework */; };
 		4C6D6BB12CEE8ECC007578FC /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C6D6BB02CEE8ECC007578FC /* SwiftUI.framework */; };
 		4C6D6BC22CEE8ECE007578FC /* WeatherWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4C6D6BAC2CEE8ECC007578FC /* WeatherWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4C6D6BE52CEE9B4D007578FC /* MyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6D6BE42CEE9B4D007578FC /* MyViewModel.swift */; };
+		4C6D6BE62CEE9B4D007578FC /* MyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6D6BE42CEE9B4D007578FC /* MyViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +43,7 @@
 		4C6D6BAC2CEE8ECC007578FC /* WeatherWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WeatherWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C6D6BAE2CEE8ECC007578FC /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		4C6D6BB02CEE8ECC007578FC /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		4C6D6BE42CEE9B4D007578FC /* MyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -92,6 +95,7 @@
 		4C6D6B6E2CEE89AA007578FC = {
 			isa = PBXGroup;
 			children = (
+				4C6D6BE42CEE9B4D007578FC /* MyViewModel.swift */,
 				4C6D6B792CEE89AA007578FC /* HourlyWTrackerNicole */,
 				4C6D6BB22CEE8ECC007578FC /* WeatherWidget */,
 				4C6D6BAD2CEE8ECC007578FC /* Frameworks */,
@@ -226,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C6D6BE52CEE9B4D007578FC /* MyViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C6D6BE62CEE9B4D007578FC /* MyViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
