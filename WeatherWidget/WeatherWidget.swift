@@ -1,93 +1,103 @@
 //
-//  WeatherWidget.swift
-//  WeatherWidget
 //
-//  Created by Nicole Morenas on 2024-11-20.
 //
 
 import WidgetKit
 import SwiftUI
 
-struct Provider: AppIntentTimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationAppIntent())
-    }
 
-    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: configuration)
+struct MydataEntry : TimelineEntry {
+    
+    let date : Date
+    let cityName: String
+    let hourlyWeather: [WeatherHour]
+}
+
+
+// Provider
+
+
+struct MyDataProvider : IntentTimelineProvider {
+    typealias Intent = MyDataIntent
+
+    typealias Entry = MydataEntry
+    
+    
+    func getSnapshot(for configuration: MyDataIntent, in context: Context, completion: @escaping @Sendable (MydataEntry) -> Void) {
+        
+        let cityName = configuration.cityName ?? "CityName"
+        let entry = MydataEntry(date: Date(), cityName: cityName, hourlyWeather: [])
+
+  
+        
+        completion(entry)
+        
     }
     
-    func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
-        var entries: [SimpleEntry] = []
-
-        // Generate a timeline consisting of five entries an hour apart, starting from the current date.
-        let currentDate = Date()
-        for hourOffset in 0 ..< 5 {
-            let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
-            entries.append(entry)
-        }
-
-        return Timeline(entries: entries, policy: .atEnd)
+    func placeholder(in context: Context) -> MydataEntry {
+        
+        MydataEntry(date: Date(), cityName: "Enter city name", hourlyWeather: [])
     }
+    
+    func getTimeline(for configuration: MyDataIntent, in context: Context, completion: @escaping @Sendable (Timeline<MydataEntry>) -> Void) {
+        
+        let cityName = configuration.cityName ?? "Enter city name"
+        
+        let entry = MydataEntry(date: Date(), cityName: cityName, hourlyWeather: [])
 
-//    func relevances() async -> WidgetRelevances<ConfigurationAppIntent> {
-//        // Generate a list containing the contexts this widget is relevant in.
-//    }
+        
+        //added timeline variable to complete it
+        let timeline = Timeline(entries: [entry], policy: .atEnd)
+        
+            //addded
+        completion(timeline)
+
+    }
+    
+    
+    
+    
+    
+    
+  
+ 
 }
 
-struct SimpleEntry: TimelineEntry {
-    let date: Date
-    let configuration: ConfigurationAppIntent
-}
+// swiftui view
 
-struct WeatherWidgetEntryView : View {
-    var entry: Provider.Entry
 
-    var body: some View {
-        VStack {
-            Text("Time:")
-            Text(entry.date, style: .time)
 
-            Text("Favorite Emoji:")
-            Text(entry.configuration.favoriteEmoji)
+struct MyDataView : View {
+    
+    let entry : MydataEntry
+    
+    
+    var body : some View {
+        
+        VStack{
+            
+            Text("Hi \(entry.cityName)")
         }
     }
+    
 }
 
+//widget
 struct WeatherWidget: Widget {
     let kind: String = "WeatherWidget"
 
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
-            WeatherWidgetEntryView(entry: entry)
-                .containerBackground(.fill.tertiary, for: .widget)
+        IntentConfiguration(kind: kind, intent: MyDataIntent.self, provider: MyDataProvider()) { entry in
+            if #available(iOS 17.0, *) {
+               MyDataView(entry: entry)
+                    .containerBackground(.fill.tertiary, for: .widget)
+            } else {
+                MyDataView(entry: entry)
+                    .padding()
+                    .background()
+            }
         }
+        .configurationDisplayName("My Widget")
+        .description("This is an example widget.")
     }
 }
-
-extension ConfigurationAppIntent {
-    fileprivate static var smiley: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "😀"
-        return intent
-    }
-    
-    fileprivate static var starEyes: ConfigurationAppIntent {
-        let intent = ConfigurationAppIntent()
-        intent.favoriteEmoji = "🤩"
-        return intent
-    }
-}
-
-#Preview(as: .systemSmall) {
-    WeatherWidget()
-} timeline: {
-    SimpleEntry(date: .now, configuration: .smiley)
-    SimpleEntry(date: .now, configuration: .starEyes)
-}
-
-
-//struct MydataEntry : TimelineEntry {
-//    let
-//}

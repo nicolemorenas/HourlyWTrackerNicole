@@ -52,7 +52,6 @@ class MyViewModel: ObservableObject {
                 let decodedResponse = try JSONDecoder().decode(WeatherResponse.self, from: data)
                 
                 //Referenced from https://stackoverflow.com/questions/28527797/how-to-return-first-5-objects-of-array-in-swift
-
                 if let firstForecastDay = decodedResponse.forecast.forecastday.first {
                     self.hourlyForecast = Array(firstForecastDay.hour.prefix(7))
                 } else {
