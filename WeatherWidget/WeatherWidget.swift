@@ -1,16 +1,15 @@
-//
-//
-//
+// NICOLE MORENAS 991691178
+
 
 import WidgetKit
 import SwiftUI
 
-
+//Referenced from ConfigurableWidgetDemo
 struct MydataEntry : TimelineEntry {
     
     let date : Date
     let cityName: String
-    let hourlyWeather: [WeatherHour]
+    let temp: String
 }
 
 
@@ -18,49 +17,51 @@ struct MydataEntry : TimelineEntry {
 
 
 struct MyDataProvider : IntentTimelineProvider {
-    typealias Intent = MyDataIntent
-
-    typealias Entry = MydataEntry
-    
-    
     func getSnapshot(for configuration: MyDataIntent, in context: Context, completion: @escaping @Sendable (MydataEntry) -> Void) {
         
         let cityName = configuration.cityName ?? "CityName"
-        let entry = MydataEntry(date: Date(), cityName: cityName, hourlyWeather: [])
-
-  
         
+        let entry = MydataEntry(date: Date(), cityName: cityName, temp: "Temp")
+  
         completion(entry)
         
     }
     
     func placeholder(in context: Context) -> MydataEntry {
         
-        MydataEntry(date: Date(), cityName: "Enter city name", hourlyWeather: [])
+        MydataEntry(date: Date(), cityName: "Enter city name", temp: "Temp")
     }
     
     func getTimeline(for configuration: MyDataIntent, in context: Context, completion: @escaping @Sendable (Timeline<MydataEntry>) -> Void) {
         
         let cityName = configuration.cityName ?? "Enter city name"
+        let vm = MyViewModel()
         
-        let entry = MydataEntry(date: Date(), cityName: cityName, hourlyWeather: [])
+        
+        Task {
+            vm.cityName = cityName
+            await vm.getWeather()
+            
+            let temp = vm.hourlyForecast.first?.temp_c ?? 0
+            let tempString = "\(temp) C"
+            
+            let entry = MydataEntry(date: Date(), cityName: cityName, temp: tempString)
+            
+            //added timeline variable to complete it because return Timeline(entries: [entry], policy: .atEnd) would give me error
 
+            let timeline = Timeline(entries: [entry], policy: .atEnd)
+            completion(timeline)
+
+        }
         
-        //added timeline variable to complete it
-        let timeline = Timeline(entries: [entry], policy: .atEnd)
-        
-            //addded
-        completion(timeline)
+        typealias Intent = MyDataIntent
+
+        typealias Entry = MydataEntry
+
 
     }
     
     
-    
-    
-    
-    
-  
- 
 }
 
 // swiftui view
@@ -74,9 +75,17 @@ struct MyDataView : View {
     
     var body : some View {
         
+//        Date format refernced from https://medium.com/@jpmtech/swiftui-format-dates-and-times-the-easy-way-fc896b25003b
         VStack{
+            Text(Date.now.formatted(date: .complete, time: .omitted))
+                .bold()
+                .font(.title3)
+            Text(Date.now.formatted(date: .omitted, time: .shortened))
+
+            Text("City: \(entry.cityName)")
+            Text("Temp: \(entry.temp)")
+
             
-            Text("Hi \(entry.cityName)")
         }
     }
     
